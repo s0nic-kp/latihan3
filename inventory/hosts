@@ -1,0 +1,9 @@
+[golang]
+golang-1    ansible_ssh_host=10.0.216.10
+golang-2    ansible_ssh_host=10.0.216.36
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_python_interpreter=/usr/bin/python3
+

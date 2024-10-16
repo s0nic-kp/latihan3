@@ -1,0 +1,54 @@
+---
+# tasks file for basic
+- name: 1. Check OS Distribution
+  debug:
+    msg: "{{ ubuntu }}"
+  with_items:
+    - "{{ ansible_distribution }}"
+    - "{{ ansible_distribution_version }}"
+    - "{{ ansible_distribution_major_version }}"
+  loop_control:
+    loop_var: ubuntu
+  tags:
+    - check_os_distribution
+
+- name: Install system updates for centos systems
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+    #cache_valid_time: 3600
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution == "CentOS"
+
+- name: Install system updates for ubuntu systems
+  apt:
+    name: '*'
+    state: latest
+    update_cache: yes
+    #cache_valid_time: 3600
+  when:
+    - ansible_os_family == "Debian"
+    - ansible_distribution == "Ubuntu"
+
+- name: create project directory
+  file:
+    path: /tmp/golang
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: download sources
+  get_url:
+    url: https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
+    dest: /tmp/golang
+    group: root
+    owner: root
+  
+- name: Extract sources
+  ansible.builtin.unarchive:
+    src: /tmp/golang/go1.23.1.linux-amd64.tar.gz
+    dest: /usr/local/
+    remote_src: yes
