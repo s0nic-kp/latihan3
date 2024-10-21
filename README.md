@@ -1,4 +1,4 @@
-# Latihan3
+# Description
 
 This is a simple ansible created for new users learning about ansible. Again, it has been built according to best practices to make it easier to use. When run, it will show which operating system is running on a server. Contains three folders and a configuration file for learning ansible from scratch. All parts need to be downloaded to run on a server or computer with ansible installed.
 
