@@ -19,7 +19,9 @@ Download all parts. Customise the configuration according to my blog
 ```
 https://ngelantur-tik.blogspot.com/2024/09/otomasi-konfigurasi-server-dengan.html#more
 ```
-
+```
+https://medium.com/@seasonic3103/otomasi-konfigurasi-server-dengan-ansible-7b5cc17cb7e4
+```
 ## Results
 
 When running the ansible command, the results will appear as shown below
